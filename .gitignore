@@ -1,8 +1,8 @@
 venv310/
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
 .env
-.DS_Store
 *.log
+.DS_Store
+node_modules/
+*.sqlite3

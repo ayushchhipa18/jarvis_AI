@@ -790,5 +790,93 @@
     {
         "role": "assistant",
         "content": "Jai Shree Krishna!"
+    },
+    {
+        "role": "user",
+        "content": "Hello."
+    },
+    {
+        "role": "assistant",
+        "content": "Hello!"
+    },
+    {
+        "role": "user",
+        "content": "Salman khan picture."
+    },
+    {
+        "role": "assistant",
+        "content": "Here's some information about Salman Khan:\n\nAbdul Rashid Salim Salman Khan is an Indian actor, film producer, and television personality who predominantly works in Hindi films. In a career spanning over three decades, his awards include two National Film Awards as a film producer, and two Filmfare Awards for acting."
+    },
+    {
+        "role": "user",
+        "content": "What is rss?"
+    },
+    {
+        "role": "assistant",
+        "content": "RSS stands for Rashtriya Swayamsevak Sangh, a Hindu nationalist organization in India."
+    },
+    {
+        "role": "user",
+        "content": "Wikipedia of rss. "
+    },
+    {
+        "role": "assistant",
+        "content": "Here's the Wikipedia definition of RSS:\n\nRashtriya Swayamsevak Sangh (RSS) is a Hindu nationalist organization in India. It is the parent organization of the Bharatiya Janata Party (BJP) and is widely regarded as the most influential Hindu nationalist organization in India.\n\nFounded in 1925 by Keshav Baliram Hedgewar, the RSS is known for its Hindutva ideology, which promotes the idea of India as a Hindu nation. The organization has been involved in various social, cultural, and political activities, including education, healthcare, and disaster relief.\n\nThe RSS has been the subject of controversy and criticism, with some accusing it of promoting Hindu extremism, intolerance, and violence against religious minorities. However, the organization and its supporters argue that it is a cultural organization that aims to promote Hindu values and unity.\n\nThe RSS has a significant presence in Indian politics, with many of its members holding influential positions in the BJP and other organizations. The organization has also been involved in various social and cultural initiatives, including the promotion of Hindu festivals, the construction of Hindu temples, and the provision of education and healthcare services."
+    },
+    {
+        "role": "user",
+        "content": "Who is the founder of rss?"
+    },
+    {
+        "role": "assistant",
+        "content": "The founder of RSS (Rashtriya Swayamsevak Sangh) is Keshav Baliram Hedgewar."
+    },
+    {
+        "role": "user",
+        "content": "Who is the?"
+    },
+    {
+        "role": "assistant",
+        "content": "I think you meant to ask \"Who is he?\""
+    },
+    {
+        "role": "user",
+        "content": "Who is the present chief of rss?"
+    },
+    {
+        "role": "assistant",
+        "content": "The present chief of RSS (Rashtriya Swayamsevak Sangh) is Mohan Bhagwat."
+    },
+    {
+        "role": "user",
+        "content": "Full name of mohan bhagwat. "
+    },
+    {
+        "role": "assistant",
+        "content": "The full name of Mohan Bhagwat is Mohan Madhukar Rao Bhagwat."
+    },
+    {
+        "role": "user",
+        "content": "Okay, bye."
+    },
+    {
+        "role": "assistant",
+        "content": "Jai Shree Krishna!"
+    },
+    {
+        "role": "user",
+        "content": "Who is the sikh sarkari of rss?"
+    },
+    {
+        "role": "assistant",
+        "content": "The Sikh Sarkari of RSS is Chiranjeev Singh."
+    },
+    {
+        "role": "user",
+        "content": "Okay, bye."
+    },
+    {
+        "role": "assistant",
+        "content": "Jai Shree Krishna!"
     }
 ]
