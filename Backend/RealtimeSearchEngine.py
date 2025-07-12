@@ -38,6 +38,7 @@ def GoogleSearch(query):
 
     Answer += "[end]"
     return Answer
+        
 
 
 def AnswerModifier(Answer):

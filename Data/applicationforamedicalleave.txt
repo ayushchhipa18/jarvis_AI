@@ -1,0 +1,31 @@
+Here is a sample application for medical leave:
+
+**Application for Medical Leave**
+
+**To,**
+[Name of Head of Department/Manager]
+[Department/Company Name]
+[Date]
+
+**Subject: Application for Medical Leave**
+
+Respected [Head of Department/Manager's Name],
+
+I am writing to request a medical leave of absence from [Date of Leave] to [Expected Date of Return]. Unfortunately, I am currently unwell and am undergoing medical treatment for [briefly mention the nature of illness/injury].
+
+Due to my health condition, I am unable to attend work and require some time to recover and recuperate. I have attached a medical certificate from my doctor, which provides more details about my condition and the expected duration of my leave.
+
+I apologize for any inconvenience this may cause and will do my best to catch up on any missed work as soon as I am able to return to the office. I will keep you updated on my progress and provide any necessary documentation to support my leave.
+
+I appreciate your understanding and approval of my request. If there is any additional information required, please do not hesitate to contact me.
+
+Thank you for your support during this time.
+
+Sincerely,
+
+[Your Name]
+[Your Employee ID/Designation]
+
+**Medical Certificate (attach a copy)**
+
+Note: Please modify the above application as per your specific needs and requirements.

@@ -17,53 +17,56 @@ System = f"""Hello, I am {Username}, You are a very accurate and advanced AI cha
 *** Do not provide notes in the output, just answer the question and never mention your training data. ***
 """
 
+
+SystemChatBot =[{"role":"system","content":System}]
 # Load existing chat history (only user/assistant messages)
 try:
     with open(r"C:/windows_vscode/jarvis_AI/Data/ChatLog.json", "r") as f:
         messages = load(f)
 except FileNotFoundError:
-    messages = []
+    
     with open(r"C:/windows_vscode/jarvis_AI/Data/ChatLog.json", "w") as f:
-        dump(messages, f)
+        dump([], f)
 
 
 def RealtimeInformation():
-    now = datetime.datetime.now()
-    return (
-        f"Please use this real-time information if needed,\n"
-        f"Day: {now.strftime('%A')}\n"
-        f"Date: {now.strftime('%d')}\n"
-        f"Month: {now.strftime('%B')}\n"
-        f"Year: {now.strftime('%Y')}\n"
-        f"Time: {now.strftime('%H')} hours : {now.strftime('%M')} minutes : {now.strftime('%S')} seconds.\n"
-    )
+    current_date_time = datetime.datetime.now()
+    day = current_date_time.strftime("%A")
+    date = current_date_time.strftime("%d")
+    month = current_date_time.strftime("%B")
+    year = current_date_time.strftime("%Y")
+    hour = current_date_time.strftime("%H")
+    minute = current_date_time.strftime("M")
+    second = current_date_time.strftime("%S")
+    
+    
+    data = f"Please use the real-time information if needed,\n"
+    data += f"Day: {day}\nDate: {date}\nMonth: {month}\nYear: {year}\n" 
+    data += f"Time: {hour} Hours :{minute} Minutes :{second} Seconds.\n"
+    return data
+
 
 
 def AnswerModifier(Answer):
     lines = Answer.split("\n")
-    non_empty = [line for line in lines if line.strip()]
-    return "\n".join(non_empty)
+    non_empty_lines = [line for line in lines if line.strip()]
+    modified_answer = "\n".join(non_empty_lines)
+    return modified_answer
 
 
 def ChatBot(Query):
-    """Send query to LLM and return real-time response."""
+    """This function sends the user's query to the chatbot and returns the AI's response."""
 
     try:
         # Load previous chat
         with open(r"C:/windows_vscode/jarvis_AI/Data/ChatLog.json", "r") as f:
-            history = load(f)
+            messages = load(f)
 
-        # Add user query to history (used only for response)
-        temp_messages = [
-            {"role": "system", "content": System},
-            {"role": "system", "content": RealtimeInformation()},
-            *history,
-            {"role": "user", "content": Query},
-        ]
+        messages.append({"role": "user", "content": f"{Query}"})
 
         completion = client.chat.completions.create(
             model="llama3-70b-8192",
-            messages=temp_messages,
+            messages=SystemChatBot + [{"role": "system", "content":RealtimeInformation()}] + messages,
             max_tokens=1024,
             temperature=0.7,
             top_p=1,
@@ -78,18 +81,18 @@ def ChatBot(Query):
 
         Answer = Answer.replace("</s>", "")
 
-        # Save only user and assistant roles to history
-        history.append({"role": "user", "content": Query})
-        history.append({"role": "assistant", "content": Answer})
+        messages.append({"role": "assistant", "content": Answer})
 
         with open(r"C:/windows_vscode/jarvis_AI/Data/ChatLog.json", "w") as f:
-            dump(history, f, indent=4)
+            dump(messages, f, indent=4)
 
         return AnswerModifier(Answer)
 
     except Exception as e:
         print(f"Error: {e}")
-        return "⚠️ Something went wrong."
+        with open(r"Data\ChatLog.json","w") as f:
+            dump([],f,indent=4)
+        return ChatBot(Query)
 
 
 if __name__ == "__main__":

@@ -15,3 +15,8 @@ pygame
 edge-tts
 pyQt5
 webdriver-manager
+gradio
+diffusers
+transformers
+torch
+accelerate

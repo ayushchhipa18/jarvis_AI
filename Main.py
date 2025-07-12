@@ -61,7 +61,7 @@ def ShowChatsOnGUI():
         lines =Data.split('\n')
         result = '\n'.join(lines)
         File.close()
-        File = open(TempDirectoryPath('Databse.data'),"w", encoding='utf-8')
+        File = open(TempDirectoryPath('Responses.data'),"w", encoding='utf-8')
         File.write(result)
         File.close()
         

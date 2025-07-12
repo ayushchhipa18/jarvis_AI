@@ -3,16 +3,15 @@ from rich import print
 from dotenv import dotenv_values
 import os
 
-# ✅ Step 1: Change directory to where .env exists
-os.chdir("C:/windows_vscode/jarvis_AI")
 
-# ✅ Step 2: Load env file
 env_vars = dotenv_values(".env")
 
-# ✅ Step 3: Access key
+
 CohereAPIKey = env_vars.get("CohereAPIKey")
 
-# ✅ Step 4: Check key
+co = cohere.Client(api_key=CohereAPIKey)
+
+
 if not CohereAPIKey:
     raise ValueError("API Key not found. Please check your .env file.")
 
@@ -20,13 +19,6 @@ if not CohereAPIKey:
 print("API Key loaded successfully ✅")
 
 
-# env_vars = dotenv_values("/home/ayush/ishu/jarvis_AI/.env")
-CohereAPIKey = env_vars.get("CohereAPIKey")
-
-# if not CohereAPIKey:
-#     raise ValueError("API Key not found. Please check your .env file.")
-
-co = cohere.Client(api_key=CohereAPIKey)
 
 funcs = [
     "exit",
@@ -87,7 +79,7 @@ ChatHistory = [
 
 
 def FirstLayerDMM(prompt: str = "test"):
-    messages.append({"role": "user", "content": prompt})
+    messages.append({"role": "user", "content": f"{prompt}"})
 
     stream = co.chat_stream(
         model="command-r-plus",
@@ -104,25 +96,28 @@ def FirstLayerDMM(prompt: str = "test"):
         if event.event_type == "text-generation":
             response += event.text
     response = response.replace("\n", "")
-    split_response = [r.strip() for r in response.split(",")]
+    response = response.split(",")
+    
+    response =[i.strip() for i in response]
+    
+    temp = []
+    
+    for task in response:
+        for func in funcs:
+            if task.startswith(func):
+                temp.append(task)
+                
+    response = temp
+    
+    if "(query)" in response:
+        newresponse = FirstLayerDMM(prompt=prompt)
+        return newresponse
+    else:
+        return response
 
-    filtered = [r for r in split_response if any(r.startswith(f) for f in funcs)]
-
-    if not filtered:
-        print("[red]⚠️ Could not classify query correctly. Returning 'general (query)'.[/red]")
-        return [f"general {prompt}"]
-
-    return filtered
+    
 
 
 if __name__ == "__main__":
     while True:
-        try:
-            user_input = input(">>> ")
-            if user_input.strip().lower() in ["exit", "quit"]:
-                break
-            result = FirstLayerDMM(user_input)
-            print(result)
-        except KeyboardInterrupt:
-            print("\n[bold red]Interrupted.[/bold red]")
-            break
+        print(FirstLayerDMM(input(">>> ")))

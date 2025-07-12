@@ -7,7 +7,7 @@ import os
 env_vars = dotenv_values(".env")
 Assistantname = env_vars.get("Assistantname")
 current_dir = os.getcwd()
-old_chat_message = " "
+old_chat_message = ""
 TempDirPath = rf"{current_dir}\Frontend\Files"
 GraphicsDirPath =rf"{current_dir}\Frontend\Graphics"
 
@@ -50,7 +50,7 @@ def SetAssistantStatus(Status):
     with open(rf'{TempDirPath}\Status.data',"w",encoding="utf-8") as file:
         file.write(Status)
         
-SetAssistantStatus("Speaking...")
+
 
 def GetAssistantStatus():
     with open(rf'{TempDirPath}\Status.data',"r",encoding="utf-8") as file:
